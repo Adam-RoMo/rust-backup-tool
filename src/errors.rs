@@ -1,0 +1,1 @@
+// Types d'erreurs personnalisés (thiserror)
