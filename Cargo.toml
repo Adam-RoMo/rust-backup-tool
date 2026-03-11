@@ -2,5 +2,7 @@
 name = "rust-backup-tool"
 version = "0.1.0"
 edition = "2021"
+authors = ["Adam Robert <adam.robert.motta@gmail.com>"]
 
 [dependencies]
+clap = { version = "4.5.60", features = ["derive"] }
