@@ -8,8 +8,9 @@ use tempfile::TempDir;      // Pour créer un environnement de test isolé
 
 // Helper pour l'usage du binaire
 fn get_cli() -> Command {
-    let mut cmd  = Command::cargo_bin("rust-backup-tool")
+    let cmd  = Command::cargo_bin("rust-backup-tool")
         .unwrap();  // Assure que le binaire est bien créé et accessible
+    cmd
 }
 
 // Test 1: option --help
