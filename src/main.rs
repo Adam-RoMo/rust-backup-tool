@@ -1,22 +1,22 @@
-use clap::Parser;
+use rust_backup_tool::Args; 
+use rust_backup_tool::errors::Result;
 
-/// Simple program to greet a person
-#[derive(Parser, Debug)]
-#[command(version, about, long_about = None)]
-struct Args {
-    /// Name of the person to greet
-    #[arg(short, long)]
-    name: String,
-
-    /// Number of times to greet
-    #[arg(short, long, default_value_t = 1)]
-    count: u8,
-}
+use log::{info, error, debug};
 
 fn main() {
-    let args = Args::parse();
+    env_logger::init();  // Initialiser le logger pour les messages de debug/info
 
-    for _ in 0..args.count {
-        println!("Hello {}!", args.name);
+    info!("Starting Rust Backup Tool...");
+
+    let args = Args::parse_args();
+
+    match run(args) {
+        Ok(_) => info!("Backup completed successfully!"),
+        Err(e) => error!("Backup failed: {}", e),
     }
+}
+
+fn run(args: Args) -> Result<()> {
+    debug!("Parsed arguments: {:?}", args);
+    Ok(())
 }
